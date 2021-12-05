@@ -143,7 +143,7 @@ if __name__ == '__main__':
             lcolors = lflare.getColors()
             stringshow[lpixid]=lcolors
         step = {}
-        print(json.dumps(stringshow))
+        print(json.dumps(stringshow[0]))
         for pixel in stringshow.keys():
             string.setPixelColor((pixel+i)%LED_STRING_COUNT, Color(stringshow[pixel][0],stringshow[pixel][1],stringshow[pixel][2]))
         for pixel in stripshow.keys():
@@ -152,4 +152,4 @@ if __name__ == '__main__':
         strip.show()
 
         i=(i+1)%LED_STRING_COUNT
-        time.sleep(.1)           
+        time.sleep(1)           
