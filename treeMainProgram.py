@@ -10,8 +10,8 @@ from rpi_ws281x import *
 import random
 
 # LED strip configuration:
-LED_STRING_COUNT = 550
-LED_STRIP_COUNT = 200
+LED_STRING_COUNT = 700
+LED_STRIP_COUNT = 600
 LED_STRING_PIN  = 18     # GPIO pin connected to the pixels (18 uses PWM!).
 LED_STRIP_PIN = 19
 #LED_PIN        = 10      # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
