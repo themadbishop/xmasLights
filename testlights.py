@@ -10,8 +10,8 @@ from rpi_ws281x import *
 import random
 
 # LED strip configuration:
-LED_STRING_COUNT = 150
-LED_STRIP_COUNT = 30
+LED_STRING_COUNT = 700
+LED_STRIP_COUNT = 600
 LED_STRING_PIN  = 18     # GPIO pin connected to the pixels (18 uses PWM!).
 LED_STRIP_PIN = 19
 #LED_PIN        = 10      # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
@@ -27,7 +27,7 @@ def colorWipe(strip, color, wait_ms=10):
     """Wipe color across display a pixel at a time."""
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, color)
-        strip.show()
+    strip.show()
         #time.sleep(wait_ms/1000.0)
 
 if __name__ == '__main__':
@@ -48,7 +48,6 @@ if __name__ == '__main__':
     }
 
     while True:
-        print ('Color wipe animations.')
         i = random.randrange(7)
         colorWipe(strip, Color(colorschemes[i][0], colorschemes[i][1], colorschemes[i][2]))  # Red wipe
         colorWipe(string, Color(colorschemes[i][0], colorschemes[i][1], colorschemes[i][2]))  # Red wipe
