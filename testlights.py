@@ -49,6 +49,7 @@ if __name__ == '__main__':
 
     while True:
         i = random.randrange(7)
+        i = 5
         colorWipe(strip, Color(colorschemes[i][0], colorschemes[i][1], colorschemes[i][2]))  # Red wipe
         colorWipe(string, Color(colorschemes[i][0], colorschemes[i][1], colorschemes[i][2]))  # Red wipe
         time.sleep(1)
