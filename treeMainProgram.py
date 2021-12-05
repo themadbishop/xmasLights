@@ -80,7 +80,7 @@ class stringflare:
         mycolors.extend( colors )
         mycolors.append([255,255,255])
         for idx, scheme in enumerate(mycolors):
-            self.mycolorschemes[idx] = colors[idx]
+            self.mycolorschemes[idx] = mycolors[idx]
         
     def getId(self):
         return self.pixid
