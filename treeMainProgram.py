@@ -23,23 +23,28 @@ LED_STRING_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 LED_STRIP_CHANNEL = 1
 NUM_PER_SEC = 4
 
+stripflaresize = 12
+
 class stripflare:
 
     fid = 0
     color = {}
 
     def __init__( self, myid=0, mycolor=[0,0,0], brightness=1 ):
+        global stripflaresize
         #self.id = myid * 10
-        self.color[myid*10+9] = [ int(x*1*brightness) for x in [255,255,255] ]
-        self.color[myid*10+8] = [ int(x*1*brightness) for x in mycolor]
-        self.color[myid*10+7] = [ int(x*.8*brightness) for x in mycolor]
-        self.color[myid*10+6] = [ int(x*.6*brightness) for x in mycolor]
-        self.color[myid*10+5] = [ int(x*.4*brightness) for x in mycolor]
-        self.color[myid*10+4] = [ int(x*.2*brightness) for x in mycolor]
-        self.color[myid*10+3] = [ int(x*.1*brightness) for x in mycolor]
-        self.color[myid*10+2] = [ int(x*.0*brightness) for x in mycolor]
-        self.color[myid*10+1] = [ int(x*.0*brightness) for x in mycolor]
-        self.color[myid*10] = [0,0,0]
+        self.color[myid*stripflaresize+9] = [ int(x*1*brightness) for x in [255,255,255] ]
+        self.color[myid*stripflaresize+8] = [ int(x*1*brightness) for x in mycolor]
+        self.color[myid*stripflaresize+7] = [ int(x*.9*brightness) for x in mycolor]
+        self.color[myid*stripflaresize+7] = [ int(x*.8*brightness) for x in mycolor]
+        self.color[myid*stripflaresize+6] = [ int(x*.6*brightness) for x in mycolor]
+        self.color[myid*stripflaresize+6] = [ int(x*.4*brightness) for x in mycolor]
+        self.color[myid*stripflaresize+5] = [ int(x*.2*brightness) for x in mycolor]
+        self.color[myid*stripflaresize+4] = [ int(x*.1*brightness) for x in mycolor]
+        self.color[myid*stripflaresize+3] = [ int(x*.0*brightness) for x in mycolor]
+        self.color[myid*stripflaresize+2] = [ int(x*.0*brightness) for x in mycolor]
+        self.color[myid*stripflaresize+1] = [ int(x*.0*brightness) for x in mycolor]
+        self.color[myid*stripflaresize] = [0,0,0]
 
     def getColors(self):
         return self.color
@@ -89,7 +94,7 @@ if __name__ == '__main__':
 
     stripshow = {}
     stripflares = []
-    for i in range(int(LED_STRIP_COUNT/10)):
+    for i in range(int(LED_STRIP_COUNT/stripflaresize)):
         stripflares.append(stripflare(myid=i,mycolor=colorschemes[i%len(colorschemes.keys())]))
     #lightflares.append(flare(myid=0,mycolor=[255,0,0]))
     #lightflares.append(flare(myid=1,mycolor=[0,255,0]))
