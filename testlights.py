@@ -51,6 +51,6 @@ if __name__ == '__main__':
         i = random.randrange(7)
         colorWipe(strip, Color(colorschemes[i][0], colorschemes[i][1], colorschemes[i][2]))  # Red wipe
         colorWipe(string, Color(colorschemes[i][0], colorschemes[i][1], colorschemes[i][2]))  # Red wipe
-        time.sleep(.25)
+        time.sleep(1)
         #colorWipe(strip, Color(0, 255, 0))  # Blue wipe
         #colorWipe(strip, Color(0, 0, 255))  # Green wipe
