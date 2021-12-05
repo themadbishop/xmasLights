@@ -81,7 +81,6 @@ class stringflare:
         mycolors.append([255,255,255])
         for idx, scheme in enumerate(mycolors):
             self.mycolorschemes[idx] = mycolors[idx]
-        print(json.dumps(self.mycolorschemes))
         
     def getId(self):
         return self.pixid
@@ -91,6 +90,7 @@ class stringflare:
             self.inc = -1
         self.state = self.state + self.inc
         if self.state <= 0:
+            self.inc = 1
             nc = random.randrange( len(self.mycolorschemes.keys()) )
             self.pixcolor = self.mycolorschemes[nc]
             self.maxstate = 0
