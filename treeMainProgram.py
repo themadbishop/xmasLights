@@ -26,6 +26,23 @@ NUM_PER_SEC = 4
 
 stripflaresize = 12
 
+colors = [
+    [255,0,0],
+    [255,255,0],
+    [0,128,255],
+    [255,0,128],
+    [128,255,0],
+    [0,0,255],
+    [255,128,0],
+    [128,0,255],
+    [0,255,255],
+    [0,255,0]
+]
+
+colorschemes = {}
+for idx, scheme in enumerate(colors):
+    colorschemes[idx] = colors[idx]
+
 class stripflare:
 
     fid = 0
@@ -46,23 +63,45 @@ class stripflare:
 
 class stringflare:
 
-    fid = 0
-    color = {}
+    pixid = 0
+    mycolorschemes = {}
+    state = 0
+    maxstate = 0
+    pixcolor = [0,0,0]
+    inc = 1
 
-    def __init__( self, myid=0, mycolor=[0,0,0], brightness=1 ):
-        #self.id = myid * 10
-        self.color[myid*10+9] = [ int(x*1) for x in [255,255,255] ]
-        self.color[myid*10+8] = [ int(x*1) for x in mycolor]
-        self.color[myid*10+7] = [ int(x*1) for x in mycolor]
-        self.color[myid*10+6] = [ int(x*.8) for x in mycolor]
-        self.color[myid*10+5] = [ int(x*.6) for x in mycolor]
-        self.color[myid*10+4] = [ int(x*.4) for x in mycolor]
-        self.color[myid*10+3] = [ int(x*.2) for x in mycolor]
-        self.color[myid*10+2] = [ int(x*.1) for x in mycolor]
-        self.color[myid*10+1] = [ int(x*0) for x in mycolor]
-        self.color[myid*10] = [0,0,0]
+    def __init__( self, myid=0, brightness=1 ):
+        global colors
+        self.brightness = brightness
+        self.pixid = myid
+        mycolors = []
+        mycolors.append([0,0,0])
+        mycolors.append([0,0,0])
+        mycolors.extend( colors )
+        mycolors.append([255,255,255])
+        for idx, scheme in enumerate(mycolors):
+            self.mycolorschemes[idx] = colors[idx]
+        
+    def getId(self):
+        return self.pixid
 
     def getColors(self):
+        if self.state == self.maxstate:
+            self.inc = -1
+        self.state = self.state + self.inc
+        if self.state == 0:
+            nc = random.randrange( len(self.mycolorschemes.keys()) )
+            self.pixcolor = self.mycolorschemes[nc]
+            self.maxstate = 0
+            if nc > 1: self.maxstate = 10
+        if self.maxstate > 0:
+            pct = nc/self.maxstate
+        else:
+            pct = 0
+        return [ int(x*pct*self.brightness) for x in self.pixcolor ]
+
+
+
         return self.color
 
 if __name__ == '__main__':
@@ -72,27 +111,10 @@ if __name__ == '__main__':
     string = Adafruit_NeoPixel(LED_STRING_COUNT, LED_STRING_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_STRING_CHANNEL)
     string.begin()
 
-    colors = [
-        [255,0,0],
-        [255,255,0],
-        [0,128,255],
-        [255,0,128],
-        [128,255,0],
-        [0,0,255],
-        [255,128,0],
-        [128,0,255],
-        [0,255,255],
-        [0,255,0]
-    ]
-
-    colorschemes = {}
-    for idx, scheme in enumerate(colors):
-        colorschemes[idx] = colors[idx]
-
     stringshow = {}
     stringflares = []
-    for i in range(int(LED_STRING_COUNT/10)):
-        stringflares.append(stringflare(myid=i,mycolor=colorschemes[i%len(colorschemes.keys())]))
+    for i in range(int(LED_STRING_COUNT)):
+        stringflares.append(stringflare(myid=i))
 
     stripshow = {}
     stripflares = []
@@ -105,9 +127,9 @@ if __name__ == '__main__':
     #lightflares.append(flare(myid=4,mycolor=[0,255,255]))
     
     for lflare in stringflares:
+        lpixid = lflare.getId()
         lcolors = lflare.getColors()
-        for pixel in lcolors.keys():
-            stringshow[pixel]=lcolors[pixel]
+        stringshow[lpixid]=lcolors
 
     for lflare in stripflares:
         lcolors = lflare.getColors()
@@ -116,6 +138,10 @@ if __name__ == '__main__':
 
     i = 0
     while True:
+        for lflare in stringflares:
+            lpixid = lflare.getId()
+            lcolors = lflare.getColors()
+            stringshow[lpixid]=lcolors
         step = {}
         for pixel in stringshow.keys():
             string.setPixelColor((pixel+i)%LED_STRING_COUNT, Color(stringshow[pixel][0],stringshow[pixel][1],stringshow[pixel][2]))
