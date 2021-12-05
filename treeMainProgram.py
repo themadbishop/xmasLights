@@ -33,17 +33,11 @@ class stripflare:
     def __init__( self, myid=0, mycolor=[0,0,0], brightness=1 ):
         global stripflaresize
         #self.id = myid * 10
-        self.color[myid*stripflaresize+11] = [ int(x*1*brightness) for x in [255,255,255] ]
-        self.color[myid*stripflaresize+10] = [ int(x*1*brightness) for x in mycolor]
-        self.color[myid*stripflaresize+9] = [ int(x*.9*brightness) for x in mycolor]
-        self.color[myid*stripflaresize+8] = [ int(x*.8*brightness) for x in mycolor]
-        self.color[myid*stripflaresize+7] = [ int(x*.6*brightness) for x in mycolor]
-        self.color[myid*stripflaresize+6] = [ int(x*.4*brightness) for x in mycolor]
-        self.color[myid*stripflaresize+5] = [ int(x*.2*brightness) for x in mycolor]
-        self.color[myid*stripflaresize+4] = [ int(x*.1*brightness) for x in mycolor]
-        self.color[myid*stripflaresize+3] = [ int(x*.0*brightness) for x in mycolor]
-        self.color[myid*stripflaresize+2] = [ int(x*.0*brightness) for x in mycolor]
-        self.color[myid*stripflaresize+1] = [ int(x*.0*brightness) for x in mycolor]
+        self.color[myid*(stripflaresize-1)] = [ int(x*1*brightness) for x in [255,255,255] ]
+        for i in range( stripflaresize - 3 ):
+            pct = i/( stripflaresize - 3 ) 
+            self.color[myid*(stripflaresize+i+2)] = [ int(x*pct*brightness) for x in mycolor ]
+        self.color[myid*stripflaresize+1] = [0,0,0]
         self.color[myid*stripflaresize] = [0,0,0]
 
     def getColors(self):
