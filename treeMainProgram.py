@@ -98,7 +98,7 @@ if __name__ == '__main__':
     stripshow = {}
     stripflares = []
     for i in range(int(LED_STRIP_COUNT/stripflaresize)):
-        stripflares.append(stripflare(myid=i,mycolor=colorschemes[i%len(colorschemes.keys())]))
+        stripflares.append(stripflare(myid=i,mycolor=colorschemes[random.randrage(len(colorschemes))]))
     #lightflares.append(flare(myid=0,mycolor=[255,0,0]))
     #lightflares.append(flare(myid=1,mycolor=[0,255,0]))
     #lightflares.append(flare(myid=2,mycolor=[0,0,255]))
