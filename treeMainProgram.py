@@ -39,6 +39,7 @@ class stripflare:
             self.color[myid*stripflaresize+i+2] = [ int(x*pct*brightness) for x in mycolor ]
         self.color[myid*stripflaresize+1] = [0,0,0]
         self.color[myid*stripflaresize] = [0,0,0]
+        print(self.color)
 
     def getColors(self):
         return self.color
