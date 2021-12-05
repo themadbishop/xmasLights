@@ -96,7 +96,7 @@ class stringflare:
             self.maxstate = 0
             if nc > 1: self.maxstate = 10
         if self.maxstate > 0:
-            pct = nc/self.maxstate
+            pct = self.state/self.maxstate
         else:
             pct = 0
         return [ int(x*pct*self.brightness) for x in self.pixcolor ]
