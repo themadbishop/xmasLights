@@ -8,6 +8,7 @@
 import time
 from rpi_ws281x import *
 import random
+import json
 
 # LED strip configuration:
 LED_STRING_COUNT = 700
@@ -39,7 +40,7 @@ class stripflare:
             self.color[myid*stripflaresize+i+2] = [ int(x*pct*brightness) for x in mycolor ]
         self.color[myid*stripflaresize+1] = [0,0,0]
         self.color[myid*stripflaresize] = [0,0,0]
-        print(self.color)
+        print(json.dumps(self.color,indent=2))
 
     def getColors(self):
         return self.color
