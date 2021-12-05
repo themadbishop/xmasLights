@@ -72,20 +72,23 @@ if __name__ == '__main__':
     string = Adafruit_NeoPixel(LED_STRING_COUNT, LED_STRING_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_STRING_CHANNEL)
     string.begin()
 
-    colorschemes = {
-        0: [255,0,0],
-        1: [255,128,0],
-        2: [0,255,0],
-        3: [128,255,0],
-        4: [0,0,255],
-        5: [0,255,128],
-        6: [255,0,128],
-        7: [255,255,0],
-        8: [0,255,255],
-        9: [128,0,255],
-        10: [255,0,255],
-        11: [0,128,255]
-    }
+    colors = [
+        [255,0,0],
+        [255,255,0],
+        [0,128,255],
+        [255,0,128],
+        [128,255,0],
+        [0,0,255],
+        [255,128,0],
+        [128,0,255],
+        [0,255,255],
+        [0,255,128],
+        [0,255,0]
+    ]
+
+    colorschemes = {}
+    for idx, scheme in enumerate(colors):
+        colorschemes[idx] = colors[idx]
 
     stringshow = {}
     stringflares = []
