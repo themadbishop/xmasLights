@@ -34,10 +34,10 @@ class stripflare:
     def __init__( self, myid=0, mycolor=[0,0,0], brightness=1 ):
         global stripflaresize
         #self.id = myid * 10
-        self.color[myid*stripflaresize-1] = [ int(x*1*brightness) for x in [255,255,255] ]
+        self.color[myid*stripflaresize + (stripflaresize-1)] = [ int(x*1*brightness) for x in [255,255,255] ]
         for g in range( stripflaresize - 3 ):
             pct = g/( stripflaresize - 3 ) 
-            self.color[myid*stripflaresize+i+2] = [ int(x*pct*brightness) for x in mycolor ]
+            self.color[myid*stripflaresize+g+2] = [ int(x*pct*brightness) for x in mycolor ]
         self.color[myid*stripflaresize+1] = [0,0,0]
         self.color[myid*stripflaresize] = [0,0,0]
         print(json.dumps(self.color,indent=2))
