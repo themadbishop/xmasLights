@@ -77,7 +77,7 @@ class stringflare:
         mycolors.append([255,0,0])
         mycolors.append([255,128,0])
         mycolors.append([0,0,204])
-        mycolors.append([102,0,204])
+        mycolors.append([255,0,0])
         for idx, scheme in enumerate(mycolors):
             self.mycolorschemes[idx] = mycolors[idx]
         
