@@ -152,4 +152,4 @@ if __name__ == '__main__':
         strip.show()
 
         i=(i+1)%LED_STRING_COUNT
-        time.sleep(.25)           
+        time.sleep(.1)           
