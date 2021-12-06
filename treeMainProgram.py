@@ -144,7 +144,7 @@ if __name__ == '__main__':
         pixel = 0
         try:
             for pixel in stringshow.keys():
-                string.setPixelColor((pixel+i)%LED_STRING_COUNT, Color(stringshow[pixel][0],stringshow[pixel][1],stringshow[pixel][2]))
+                string.setPixelColor(pixel, Color(stringshow[pixel][0],stringshow[pixel][1],stringshow[pixel][2]))
         except:
             traceback.print_exc()
             print( stringshow[pixel])
