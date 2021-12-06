@@ -9,6 +9,7 @@ import time
 from rpi_ws281x import *
 import random
 import json
+import traceback
 
 # LED strip configuration:
 LED_STRING_COUNT = 700
@@ -145,8 +146,13 @@ if __name__ == '__main__':
             stringshow[lpixid]=lcolors
         step = {}
         print(json.dumps(stringshow[0]))
-        for pixel in stringshow.keys():
-            string.setPixelColor((pixel+i)%LED_STRING_COUNT, Color(stringshow[pixel][0],stringshow[pixel][1],stringshow[pixel][2]))
+        pixel = 0
+        try:
+            for pixel in stringshow.keys():
+                string.setPixelColor((pixel+i)%LED_STRING_COUNT, Color(stringshow[pixel][0],stringshow[pixel][1],stringshow[pixel][2]))
+        except:
+            traceback.print_exc()
+            print( stringshow[pixel])
         for pixel in stripshow.keys():
             strip.setPixelColor((pixel+i)%LED_STRIP_COUNT, Color(stripshow[pixel][0],stripshow[pixel][1],stripshow[pixel][2]))
         string.show()
