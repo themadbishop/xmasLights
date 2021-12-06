@@ -29,7 +29,6 @@ stripflaresize = 12
 
 colors = [
     [255,0,0],
-    [0,128,255],
     [255,0,128],
     [0,0,255],
     [255,128,0],
@@ -76,6 +75,7 @@ class stringflare:
         mycolors.extend( colors )
         mycolors.append([255,255,255])
         mycolors.append([255,0,0])
+        mycolors.append([255,128,0])
         mycolors.append([0,0,204])
         mycolors.append([102,0,204])
         for idx, scheme in enumerate(mycolors):
