@@ -52,9 +52,6 @@ class stripflare:
         for g in range( stripflaresize - 6 ):
             pct = g/( stripflaresize - 6 ) 
             self.color[myid*stripflaresize+g+2] = [ int(x*pct*brightness) for x in mycolor ]
-        self.color[myid*stripflaresize+4] = [0,0,0]
-        self.color[myid*stripflaresize+3] = [0,0,0]
-        self.color[myid*stripflaresize+2] = [0,0,0]
         self.color[myid*stripflaresize+1] = [0,0,0]
         self.color[myid*stripflaresize] = [0,0,0]
 
