@@ -29,7 +29,6 @@ stripflaresize = 12
 
 colors = [
     [255,0,0],
-    [255,255,0],
     [0,128,255],
     [255,0,128],
     [0,0,255],
@@ -74,8 +73,6 @@ class stringflare:
         self.brightness = brightness
         self.pixid = myid
         mycolors = []
-        mycolors.append([0,0,0])
-        mycolors.append([0,0,0])
         mycolors.extend( colors )
         mycolors.append([255,255,255])
         for idx, scheme in enumerate(mycolors):
@@ -95,7 +92,7 @@ class stringflare:
             self.inc = 1
             nc = random.randrange( len(self.mycolorschemes.keys()) )
             self.pixcolor = self.mycolorschemes[nc]
-            if nc > 1: self.maxstate = 5 + random.randrange(6)
+            self.maxstate = 5 + random.randrange(6)
         if self.maxstate > 0: pct = self.state/self.maxstate
 
         return [ int(x*pct*self.brightness) for x in self.pixcolor ]
