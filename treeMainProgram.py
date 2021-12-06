@@ -127,11 +127,6 @@ if __name__ == '__main__':
     #lightflares.append(flare(myid=2,mycolor=[0,0,255]))
     #lightflares.append(flare(myid=3,mycolor=[255,255,0]))
     #lightflares.append(flare(myid=4,mycolor=[0,255,255]))
-    
-    for lflare in stringflares:
-        lpixid = lflare.getId()
-        lcolors = lflare.getColors()
-        stringshow[lpixid]=lcolors
 
     for lflare in stripflares:
         lcolors = lflare.getColors()
