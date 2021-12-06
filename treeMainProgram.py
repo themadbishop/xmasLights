@@ -94,6 +94,7 @@ class stringflare:
             self.maxstate = 0
             self.inc = 1
             nc = random.randrange( len(self.mycolorschemes.keys()) )
+            nc = len(self.mycolorschemes.keys()) - 1
             self.pixcolor = self.mycolorschemes[nc]
             self.maxstate = 5 + random.randrange(20)
         if self.maxstate > 0: pct = self.state/self.maxstate
