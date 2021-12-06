@@ -48,7 +48,7 @@ class stripflare:
     def __init__( self, myid=0, mycolor=[0,0,0], brightness=1 ):
         global stripflaresize
         #self.id = myid * 10
-        self.color[myid*stripflaresize + (stripflaresize-1)] = [ int(x*1*brightness) for x in [255,255,255] ]
+        self.color[myid*stripflaresize + (stripflaresize-1)] = [ int(x*1*brightness) for x in [255,0,0] ]
         for g in range( stripflaresize - 6 ):
             pct = g/( stripflaresize - 6 ) 
             self.color[myid*stripflaresize+g+2] = [ int(x*pct*brightness) for x in mycolor ]
