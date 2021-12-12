@@ -58,7 +58,7 @@ class stripflare:
         for g in range( blank ):
             self.color[myid*stripflaresize+g] = [0,0,0]
 
-    def getColors(self, currid):
+    def getColors(self):
         return self.color
 
 class stringflare:
