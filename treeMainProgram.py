@@ -29,6 +29,7 @@ stripflaresize = 15
 
 colors = [
     [255,0,0],
+    [0,255,255]
     [255,0,128],
     [0,0,255],
     [255,128,0],
@@ -57,7 +58,7 @@ class stripflare:
         for g in range( blank ):
             self.color[myid*stripflaresize+g] = [0,0,0]
 
-    def getColors(self):
+    def getColors(self, currid):
         return self.color
 
 class stringflare:
@@ -101,10 +102,6 @@ class stringflare:
         if self.maxstate > 0: pct = self.state/self.maxstate
         colorreturn = [ int(x*pct*self.brightness) for x in self.pixcolor ]
         return [ colorreturn[1], colorreturn[0],colorreturn[2] ]
-
-
-
-        return self.color
 
 if __name__ == '__main__':
 
