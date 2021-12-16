@@ -53,7 +53,7 @@ class stripflare:
         self.color[myid*stripflaresize + (stripflaresize-1)] = [ int(x*1*brightness) for x in [255,255,255] ]
         colorrange = range( (stripflaresize - 14), (stripflaresize - 1) )
         for g in range(len(colorrange)):
-            pct = g**2/( len( colorrange )-1)**2 
+            pct = g**4/( len( colorrange )-1)**4
             self.color[myid*stripflaresize+colorrange[g]] = [ int(x*pct*brightness) for x in mycolor ]
         blank = stripflaresize - len(colorrange) - 1
         for g in range( blank ):
